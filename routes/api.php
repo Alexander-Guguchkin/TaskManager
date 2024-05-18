@@ -11,4 +11,5 @@ Route::get('/user', function (Request $request) {
 Route::group(['namespace' => 'Task', 'prefix' => 'task'], function(){
     Route::post('/', [TaskController::class, 'createTask']);
     Route::get('/', [TaskController::class, 'getStoreTasks']);
+    Route::patch('/{id}', [TaskController::class, 'editTask']);
 });

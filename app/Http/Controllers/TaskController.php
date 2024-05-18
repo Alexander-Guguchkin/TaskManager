@@ -11,11 +11,13 @@ class TaskController extends Controller
     public function createTask(TaskRequest $request) {
         $data = $request->validated();
         $task = Task::create($data);
-        return $data;
+        return $task;
     }
 
-    public function editTask($id){
-
+    public function editTask(TaskRequest $request, Task $id){
+        $data = $request->validated();
+        $id->update($data);
+        return $id;
     }
 
     public function deleteTask($id){
