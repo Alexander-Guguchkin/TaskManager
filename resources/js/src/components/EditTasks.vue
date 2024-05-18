@@ -19,11 +19,8 @@ export default{
                 name: this.taskName,
                 description: this.taskDescription,
                 executor: this.taskExecutor
-            }).then(res =>{
-                console.log(this.id,this.taskName, this.taskDescription, this.taskExecutor);
-                console.log(res.data);
-                this.$parent.getTasks()
             });
+            this.$parent.getTasks();
         }
     },
 }
@@ -34,7 +31,6 @@ export default{
         <div class="table__row"><input type="text" v-model="taskDescription"></div>
         <div class="table__row"><input type="text" v-model="taskExecutor"></div>
         <div class="table__row"><button class="edit" @click="editTask(this.id)">Update</button></div>
-        <!-- <div class="table__row"><button class="delete">Delete</button></div> -->
 </template>
 <style lang="scss" scoped>
 

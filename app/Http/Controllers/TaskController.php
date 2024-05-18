@@ -20,8 +20,9 @@ class TaskController extends Controller
         return $id;
     }
 
-    public function deleteTask($id){
-
+    public function deleteTask(Task $id){
+        $id->delete();
+        return $id;
     }
     
     public function getStoreTasks(){

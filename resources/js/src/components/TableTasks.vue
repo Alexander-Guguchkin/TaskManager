@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import EditTasks from './EditTasks.vue';
 
 export default{
@@ -22,6 +23,10 @@ export default{
         },
         isEdit(id){
             return this.changeID === id
+        },
+        deleteTask(id){
+            axios.delete(`/api/task/${id}`);
+            this.getTasks();
         }
     },
     mounted(){
@@ -48,7 +53,7 @@ export default{
                         <div class="table__row">{{ elem.description }}</div>
                         <div class="table__row">{{ elem.executor }}</div>
                         <div class="table__row"><button class="edit" @click="changeTask(elem.id)">Edit</button></div>
-                        <div class="table__row"><button class="delete">Delete</button></div>
+                        <div class="table__row"><button class="delete" @click="deleteTask(elem.id)">Delete</button></div>
                     </div>
 
                     <div :class="isEdit(elem.id)?'view':'none'">
