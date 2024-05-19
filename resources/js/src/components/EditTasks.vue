@@ -32,6 +32,3 @@ export default{
         <div class="table__row"><input type="text" v-model="taskExecutor"></div>
         <div class="table__row"><button class="edit" @click="editTask(this.id)">Update</button></div>
 </template>
-<style lang="scss" scoped>
-
-</style>

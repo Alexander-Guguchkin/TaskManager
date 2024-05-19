@@ -30,7 +30,7 @@ class TaskController extends Controller
         return $tasks;
     }
 
-    public function getStoreTask($id){
-        
+    public function getStoreTask(Task $id){
+        return $id;
     }
 }

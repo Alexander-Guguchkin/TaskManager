@@ -1,9 +1,11 @@
 <script setup>
     import Tasks from "./components/Tasks.vue";
+    import Executor from "./components/Executor.vue";
 </script>
 
 <template>
     <div>
+        <Executor/>
         <Tasks />        
     </div>
 </template>

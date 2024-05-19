@@ -1,35 +1,35 @@
 <script>
-import EditTasks from './EditTasks.vue';
+import EditExecutors from './EditExecutors.vue';
 
 export default{
     components:{
-        EditTasks
+        EditExecutors
     },
     data(){
         return{
-            tasks:{},
+            executors:{},
             changeID:null
         }
     },
     methods:{
-        getTasks(){
-            axios.get('/api/task').then(res=>{
-                this.tasks = res.data;
+        getExecutors(){
+            axios.get('/api/executor').then(res=>{
+                this.executors = res.data;
             });
         },
-        changeTask(id){
+        changeExecutor(id){
             this.changeID = id;
         },
         isEdit(id){
             return this.changeID === id
         },
-        deleteTask(id){
-            axios.delete(`/api/task/${id}`);
-            this.getTasks();
+        deleteExecutor(id){
+            axios.delete(`/api/executor/${id}`);
+            this.getExecutors();
         }
     },
     mounted(){
-        this.getTasks()
+        this.getExecutors()
     }
 }
 </script>
@@ -39,28 +39,25 @@ export default{
         <div class="table__header">
             <div class="table__row">id</div>
             <div class="table__row">name</div>
-            <div class="table__row">description</div>
-            <div class="table__row">executor</div>
+            <div class="table__row">job</div>
             <div class="table__row">Edit</div>
             <div class="table__row">Delete</div>
         </div>
         <div class="table__body">
-            <template v-for="elem in tasks">
+            <template v-for="elem in executors">
                     <div class="output">
                         <div class="table__row">{{ elem.id }}</div>
                         <div class="table__row">{{ elem.name }}</div>
-                        <div class="table__row">{{ elem.description }}</div>
-                        <div class="table__row">{{ elem.executor }}</div>
-                        <div class="table__row"><button class="edit" @click="changeTask(elem.id)">Edit</button></div>
-                        <div class="table__row"><button class="delete" @click="deleteTask(elem.id)">Delete</button></div>
+                        <div class="table__row">{{ elem.job }}</div>
+                        <div class="table__row"><button class="edit" @click="changeExecutor(elem.id)">Edit</button></div>
+                        <div class="table__row"><button class="delete" @click="deleteExecutor(elem.id)">Delete</button></div>
                     </div>
 
                     <div :class="isEdit(elem.id)?'view':'none'">
-                        <EditTasks
+                        <EditExecutors
                             :id = "elem.id"  
                             :name = "elem.name "
-                            :description = "elem.description"
-                            :executor = "elem.executor"
+                            :job = "elem.job"
                         />
                     </div>
                     
@@ -84,7 +81,7 @@ export default{
     .table__header,  .output, .view{
         display: grid;
         gap:10px;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         place-items: center;
     }
     .delete{
@@ -98,4 +95,4 @@ export default{
     }
 
 
-</style>
+</style>    
