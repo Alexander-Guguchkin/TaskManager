@@ -1,6 +1,25 @@
 import './bootstrap';
-import {createApp} from 'vue'
 
-import App from './src/App.vue'
 
-createApp(App).mount("#app")
+import { createRouter } from 'vue-router';
+import { createWebHistory } from 'vue-router';
+import { createApp } from 'vue';
+import App from './src/App.vue';
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+        path: '/tasks', component: () => import('./src/components/Tasks.vue'),
+        name: 'task.index'
+    },
+    {
+        path: '/executors', component: () => import('./src/components/Executor.vue'),
+        name: 'executor.index'
+    }
+  ],
+});
+
+const app = createApp(App);
+app.use(router);
+app.mount('#app');
