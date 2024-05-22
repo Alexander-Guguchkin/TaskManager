@@ -20,6 +20,10 @@ const router = createRouter({
     {
       path: '/auth', component: () => import('./src/components/Auth/Auth.vue'),
       name: 'auth.index'
+    },
+    {
+      path: '/register', component: () => import('./src/components/Auth/Register.vue'),
+      name: 'register.index'
     }
     
   ],

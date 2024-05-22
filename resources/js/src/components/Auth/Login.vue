@@ -16,10 +16,11 @@ export default {
         </div>
         <div class="form__buttons">
             <button class="login" @click="">Войти</button>
+            <router-link :to="{name: 'register.index'}"> <button class="register">Регистрация</button></router-link>
         </div> 
     </div>
 </template>
-<style>
+<style scoped>
     .form{
         width: 25%;
         margin: 0 auto;
@@ -28,7 +29,6 @@ export default {
     .inputs{
         display: grid;
         grid-template-rows: repeat(2,1fr);
-        /* width: 460px; */
         gap: 10px;
         width: 100%;
     }
@@ -40,10 +40,14 @@ export default {
         padding: 10px;
         border-radius: 6px;
     }
-    .login{
+    .login, .register{
         background: rgb(0, 255, 0);
         color:white;
         font-weight: bold;
         width: 100%;
+    }
+    .register{
+        background: rgb(0, 255, 0);
+        margin-top: 10px;
     }
 </style>
