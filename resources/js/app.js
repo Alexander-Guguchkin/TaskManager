@@ -16,7 +16,12 @@ const router = createRouter({
     {
         path: '/executors', component: () => import('./src/components/Executor.vue'),
         name: 'executor.index'
+    },
+    {
+      path: '/auth', component: () => import('./src/components/Auth/Auth.vue'),
+      name: 'auth.index'
     }
+    
   ],
 });
 
